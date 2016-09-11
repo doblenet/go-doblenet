@@ -1,7 +1,7 @@
 package tracer
 
 import (
-	"errors"
+// 	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -62,12 +62,12 @@ func FatalErr(e error) {
 
 func Error(x string) {
 	fmt.Fprintf(x2, k_ERROR)
-	fmt.Fprint(x2, x)
+	fmt.Fprintln(x2, x)
 }
 
 func Warn(x string) {
 	fmt.Fprintf(x2, k_WARNING)
-	fmt.Fprint(x2, x)
+	fmt.Fprintln(x2, x)
 }
 
 func Trace(n uint, s string) {
@@ -76,4 +76,15 @@ func Trace(n uint, s string) {
 	}
 	fmt.Fprintf(x1, k_TRACE, n)
 	fmt.Fprint(x1, s)
+}
+
+func TraceV(n uint, s string, x ...interface{}) {
+	if n > threshold {
+		return
+	}
+	fmt.Fprintf(x1, k_TRACE, n)
+	fmt.Fprint(x1, s)
+	for _,v := range x {
+		fmt.Fprint(x1,v)
+	}
 }
