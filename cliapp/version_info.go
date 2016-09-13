@@ -42,7 +42,7 @@ func printExtendedInfo(a *App, out io.Writer) {
 	renderText(w, "attribs", attribTemplate, a.metadata)
 
 	// Authors & copyright
-	ci := struct{Authors []Author ; Copyright string}{a.authors, a.info.Copyright}
+	ci := struct{Authors []Author ; Copyright string; Email string}{a.authors, a.info.Copyright, a.info.Email}
 	renderText(w, "copyright", infoTemplate, ci)
 
 	w.Flush()
