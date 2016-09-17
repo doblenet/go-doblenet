@@ -11,7 +11,7 @@ const (
 	k_FATAL	= "FATAL: "
 	k_ERROR = "E: "
 	k_WARNING="W: "
-	k_TRACE	= "TRACE%u"
+	k_TRACE	= "TRACE%d:: "
 )
 
 var (
@@ -55,6 +55,7 @@ func FatalErr(e error) {
 	// FATAL: ...
 	fmt.Fprintf(x2, k_FATAL)
 	fmt.Fprintln(x2, e.Error())
+	fmt.Fprintln(x2, "")
 	os.Exit(255)
 }
 
@@ -87,4 +88,5 @@ func TraceV(n uint, s string, x ...interface{}) {
 	for _,v := range x {
 		fmt.Fprint(x1,v)
 	}
+	fmt.Fprintln(x1)
 }
