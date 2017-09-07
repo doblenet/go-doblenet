@@ -10,7 +10,8 @@ import (
 const (
 	k_FATAL	= "FATAL: "
 	k_ERROR = "E: "
-	k_WARNING="W: "
+	k_WARN  = "W: "
+	k_INFO  = "I: "
 	k_TRACE	= "TRACE%u"
 )
 
@@ -70,6 +71,14 @@ func Warn(x string) {
 	fmt.Fprintf(x2, k_WARNING)
 	fmt.Fprintln(x2, x)
 }
+
+func Info(x string) {
+	fmt.Fprintf(x2, k_INFO)
+	fmt.Fprintln(x2, x)
+}
+
+
+
 
 func Trace(n uint, s string) {
 	if n > threshold {
