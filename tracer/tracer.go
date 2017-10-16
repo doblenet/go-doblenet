@@ -1,7 +1,6 @@
 package tracer
 
 import (
-// 	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -12,7 +11,7 @@ const (
 	k_ERROR = "E: "
 	k_WARN  = "W: "
 	k_INFO  = "I: "
-	k_TRACE	= "TRACE%u"
+	k_TRACE	= "[TRACE%d] "
 )
 
 var (
@@ -68,7 +67,7 @@ func Error(x string) {
 }
 
 func Warn(x string) {
-	fmt.Fprintf(x2, k_WARNING)
+	fmt.Fprintf(x2, k_WARN)
 	fmt.Fprintln(x2, x)
 }
 
@@ -85,16 +84,23 @@ func Trace(n uint, s string) {
 		return
 	}
 	fmt.Fprintf(x1, k_TRACE, n)
-	fmt.Fprint(x1, s)
+	fmt.Fprintln(x1, s)
 }
 
-func TraceV(n uint, s string, x ...interface{}) {
+
+
+func Tracef(n uint, s string, x ...interface{}) {
 	if n > threshold {
 		return
 	}
 	fmt.Fprintf(x1, k_TRACE, n)
-	fmt.Fprint(x1, s)
-	for _,v := range x {
-		fmt.Fprint(x1,v)
+	fmt.Fprintf(x1, s, x...)
+}
+
+func TraceV(n uint, x ...interface{}) {
+	if n > threshold {
+		return
 	}
+	fmt.Fprintf(x1, k_TRACE, n)
+	fmt.Fprintln(x1, x...)
 }
