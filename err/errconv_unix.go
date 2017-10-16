@@ -19,14 +19,14 @@ func ConvertErrno(err error) syscall.Errno {
     return 0
 }
 
-func CheckSysErr(err error, val uintptr) bool {
+func CheckErrno(err error, val syscall.Errno) bool {
 
     // Check os.PathError first
     if e, ok := err.(*os.PathError); ok {
        
         c := e.Err
 	if r,g := c.(syscall.Errno); g {
-	    return r  == syscall.Errno(val)
+	    return r  == val
 	}
 	// Not a *os.PathError
     }
@@ -34,7 +34,7 @@ func CheckSysErr(err error, val uintptr) bool {
     
     // Check if generic syscall.Errno
     if e, ok := err.(syscall.Errno); ok {
-        return e == syscall.Errno(val)
+        return e == val
     }
 
     return false
