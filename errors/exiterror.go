@@ -1,4 +1,4 @@
-package errors
+package err
 
 
 import (
@@ -27,7 +27,7 @@ func ExitError(exitCode int, info error) ExitCoder {
 	}
 }
 
-func ExitErrorv(exitCode int, msg ...interface{}) ExitCoder {
+func ExitErrorV(exitCode int, msg ...interface{}) ExitCoder {
 	return &exitErr{
 		code: exitCode,
 		data: fmt.Sprint(msg...),
