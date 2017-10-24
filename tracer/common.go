@@ -43,13 +43,13 @@ func SetupTrace(out io.Writer, n uint) {
 	threshold = n
 }
 
-func _puts(w io.Writer, x string) err error {
-	_,err := io.WriteString(w,x)
+func _puts(w io.Writer, x string) (err error) {
+	_,err = io.WriteString(w,x)
 	return
 }
 
-func _putln(w io.Writer, x string) err error {
-	_,err := io.WriteString(w,x)
+func _putln(w io.Writer, x string) (err error) {
+	_,err = io.WriteString(w,x)
 	w.Write([]byte("\n"))
 	return
 }
