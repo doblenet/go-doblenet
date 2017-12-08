@@ -8,6 +8,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const (
+	msgApp_NotInit = "Application object not initialized properly"
+)
+
+
 type AppInfo struct {
 	Name		string
 	Version		string
@@ -47,7 +52,7 @@ func New(i AppInfo) *App {
 
 func (a *App) SetCommander(c *cobra.Command) error {
 	if !a.init {
-		return errors.New("Application object not initialized properly")
+		return errors.New(msgApp_NotInit)
 	}
 	a.cobra = c
 	return setupCobra(a,c)
@@ -55,7 +60,7 @@ func (a *App) SetCommander(c *cobra.Command) error {
 
 func (a *App) SetMetadata(mm map[string]interface{}) error {
 	if !a.init {
-		return errors.New("Application object not initialized properly")
+		return errors.New(msgApp_NotInit)
 	}
 	a.metadata = mm
 	return nil
@@ -75,10 +80,10 @@ func (x *App) SetAuthors(aa ...Author) {
 func (a *App) Run() {	// NORETURN
 	
 	if !a.init {
-		fmt.Println("FATAL: Application object not initialized properly")
+//		fmt.Println("FATAL: Application object not initialized properly")
+		panic(msgApp_NotInit)
 		os.Exit(127)
 	}
-	
 	r := os.Args
 	c := a.cobra
 	
@@ -96,7 +101,7 @@ func (a *App) Run() {	// NORETURN
 	}
 	
 	if err := c.Execute(); err != nil {
-		fmt.Println(err)
+		fmt.Println("ERROR:",err.Error())
 		os.Exit(1)
 	}
 	os.Exit(0)

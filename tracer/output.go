@@ -6,6 +6,10 @@ import (
 
 
 func Puts(x string) {
+	_puts(os.Stdout,x)
+}
+
+func Putln(x string) {
 	_putln(os.Stdout,x)
 }
 
