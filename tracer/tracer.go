@@ -28,3 +28,14 @@ func TraceV(n uint, x ...interface{}) {
 	fmt.Fprintf(x1, k_TRACE, n)
 	fmt.Fprintln(x1, x...)
 }
+
+
+func Debugf(s string, x ...interface{}) {
+	_puts(x2, k_DEBUG)
+	fmt.Fprintf(x2, s, x...)
+}
+
+func DebugV(x ...interface{}) {
+	_puts(x1, k_DEBUG)
+	fmt.Fprintln(x1, x...)
+}

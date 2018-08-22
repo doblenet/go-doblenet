@@ -11,6 +11,7 @@ const (
 	k_WARN  = "W: "
 	k_INFO  = "I: "
 	k_TRACE	= "[TRACE%d] "
+	k_DEBUG = "DEBUG: "
 )
 
 var (
