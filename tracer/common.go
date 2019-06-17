@@ -10,6 +10,7 @@ const (
 	k_ERROR = "E: "
 	k_WARN  = "W: "
 	k_INFO  = "I: "
+	k_NOTICE= "N: "
 	k_TRACE	= "[TRACE%d] "
 	k_DEBUG = "DEBUG: "
 )

@@ -5,16 +5,6 @@ import (
 )
 
 
-func Puts(x string) {
-	_puts(os.Stdout,x)
-}
-
-func Putln(x string) {
-	_putln(os.Stdout,x)
-}
-
-
-
 func FatalErr(e error) {
 	// FATAL: ...
 	_puts(x2, k_FATAL)
@@ -47,5 +37,10 @@ func Warn(x string) {
 
 func Info(x string) {
 	_puts(x2, k_INFO)
+	_putln(x2, x)
+}
+
+func Notice(x string) {
+	_puts(x2, k_NOTICE)
 	_putln(x2, x)
 }
