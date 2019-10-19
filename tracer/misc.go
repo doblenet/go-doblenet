@@ -21,3 +21,8 @@ func PutV(s string, vals ...string) {
 	}
 	_putln(os.Stdout,string(buf))
 }
+
+
+func TraceOver(level uint) bool {
+	return (threshold <= level)
+}
