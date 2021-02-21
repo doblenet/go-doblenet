@@ -37,5 +37,5 @@ func Debugf(s string, x ...interface{}) {
 
 func DebugV(x ...interface{}) {
 	_puts(x1, k_DEBUG)
-	fmt.Fprintln(x1, x...)
+	fmt.Fprintln(x2, x...)
 }

@@ -45,6 +45,12 @@ func SetupTrace(out io.Writer, n uint) {
 	threshold = n
 }
 
+func SetOutput(out io.Writer) {
+	if nil != out {
+		x2 = out
+	}
+}
+
 func _puts(w io.Writer, x string) (err error) {
 	_,err = io.WriteString(w,x)
 	return
